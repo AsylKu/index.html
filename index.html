@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Valentine 💖</title>
+
+<style>
+  body {
+    margin: 0;
+    height: 100vh;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .container {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+    max-width: 420px;
+    width: 90%;
+    text-align: center;
+    z-index: 2;
+  }
+
+  h1 {
+    color: #e6005c;
+  }
+
+  img {
+    width: 100%;
+    border-radius: 15px;
+    margin: 20px 0;
+  }
+
+  .buttons {
+    position: relative;
+    height: 140px;
+  }
+
+  button {
+    padding: 16px 32px;
+    font-size: 20px;
+    border: none;
+    border-radius: 40px;
+    cursor: pointer;
+    position: absolute;
+  }
+
+  #yesBtn {
+    background: #ff4d6d;
+    color: white;
+    left: 20px;
+    bottom: 20px;
+  }
+
+  #noBtn {
+    background: #ccc;
+    right: 20px;
+    top: 10px;
+  }
+
+  .final {
+    display: none;
+  }
+
+  .heart {
+    position: absolute;
+    bottom: -20px;
+    font-size: 24px;
+    animation: float 6s linear infinite;
+  }
+
+  @keyframes float {
+    to {
+      transform: translateY(-110vh);
+      opacity: 0;
+    }
+  }
+</style>
+</head>
+
+<body>
+
+<audio autoplay loop>
+  <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3">
+</audio>
+
+<div class="container" id="main">
+  <h1>Will you be my valentine Aisha?</h1>
+  <img src="photo.jpg">
+
+  <div class="buttons">
+    <button id="yesBtn">YES 💖</button>
+    <button id="noBtn">NO 🙃</button>
+  </div>
+</div>
+
+<div class="container final" id="final">
+  <h1>I KNEW IT 💘</h1>
+  <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExbGlkbGlrZ3dyaGo5dTNrbnFqaGFtcnQ4YThtMGo5Mm11OXg1b2lvdiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/NrY2E9mRUGj8i9e6RH/giphy.gif">
+</div>
+
+<script>
+  const yes = document.getElementById("yesBtn");
+  const no = document.getElementById("noBtn");
+  let scale = 1;
+
+  no.addEventListener("mouseenter", () => {
+    no.style.transform =
+      `translate(${Math.random()*300-150}px,${Math.random()*200-100}px)`;
+  });
+
+  yes.addEventListener("click", () => {
+    scale += 0.05;
+    yes.style.transform = `scale(${scale})`;
+    if (scale >= 2) {
+      document.getElementById("main").style.display = "none";
+      document.getElementById("final").style.display = "block";
+    }
+  });
+
+  setInterval(() => {
+    const h = document.createElement("div");
+    h.className = "heart";
+    h.innerText = "❤️";
+    h.style.left = Math.random()*100+"vw";
+    document.body.appendChild(h);
+    setTimeout(()=>h.remove(),6000);
+  },300);
+</script>
+
+</body>
+</html>
